@@ -1,0 +1,24 @@
+{
+  "vehicle": {
+    "type": {
+      "bus": "Bus",
+      "tram": "Tram",
+      "ferry": "Ferry",
+      "train": {
+        "long_distance": "Long distance train",
+        "regional": "Regional train",
+        "vasttagen": "Västtågen"
+      },
+      "taxi": "Taxi / Flexlinjen",
+      "unknown": "Unknown"
+    },
+    "delay": {
+      "on_time": "On time",
+      "delayed_singular": "%s minute late",
+      "delayed_plural": "%s minutes late",
+      "early_singular": "%s minute early",
+      "early_plural": "%s minutes early",
+      "no_data": "No data"
+    }
+  }
+}

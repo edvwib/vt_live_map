@@ -14,17 +14,29 @@ description: A live map of Västra Götalands public transport.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.2.0 <3.0.0"
+  sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
   http: ^0.12.0
   json_serializable: ^3.2.3
+  json_annotation: ^3.0.0
   device_id: ^0.2.0
   permission_handler: ^4.0.0
-  image: ^2.1.9
+  image: ^2.1.4
+  get_it: ^3.1.0
+  dartz: ^0.8.9
+  data_connection_checker: ^0.3.4
+  equatable: ^1.1.0
+  flutter_bloc: ^3.2.0
+  rxdart: ^0.23.1
+  shared_preferences: ^0.5.6+1
+  flutter_translate: ^1.5.7
+  flutter_translate_annotations: ^1.0.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -39,7 +51,8 @@ dev_dependencies:
 
   pedantic: ^1.8.0
   build_runner: ^1.7.1
-
+  flutter_translate_gen: ^1.2.4
+  mockito: ^4.1.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -56,6 +69,7 @@ flutter:
   assets:
     - assets/icons/
     - assets/icons/trams/
+    - assets/i18n/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

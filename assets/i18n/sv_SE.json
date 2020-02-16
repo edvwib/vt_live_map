@@ -1,0 +1,24 @@
+{
+  "vehicle": {
+    "type": {
+      "bus": "Buss",
+      "tram": "Spårvagn",
+      "ferry": "Färja",
+      "train": {
+        "long_distance": "Långdistanståg",
+        "regional": "Regionaltåg",
+        "vasttagen": "Västtågen"
+      },
+      "taxi": "Taxi / Flexlinjen",
+      "unknown": "Unknown"
+    },
+    "delay": {
+      "on_time": "I tid",
+      "delayed_singular": "%s minut sen",
+      "delayed_plural": "%s minuter sen",
+      "early_singular": "%s minut tidig",
+      "early_plural": "%s minuter tidig",
+      "no_data": "Ingen data"
+    }
+  }
+}

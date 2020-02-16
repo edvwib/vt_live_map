@@ -1,31 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:vt_live_map/vt/widgets/LiveMap.dart';
+import 'package:flutter_translate/flutter_translate.dart';
+import 'package:vt_live_map/core/application/data/data_sources/app_init_local_data_source.dart';
+import 'package:vt_live_map/core/application/presentation/pages/vt_live_map.dart';
+import 'package:vt_live_map/injection_container.dart' as di;
 
-void main() {
-  runApp(MaterialApp(
-    title: 'VT Live Map',
-    home: Start(),
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await di.init();
+
+  final Locale fallback = AppInitLocalDataSource.fallbackLocale;
+  final delegate = await LocalizationDelegate.create(
+    fallbackLocale: '${fallback.languageCode}_${fallback.countryCode}',
+    supportedLocales: ['en_US', 'sv_SE'],
+  );
+
+  runApp(LocalizedApp(
+    delegate,
+    VTLiveMap(),
   ));
-}
-
-class Start extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Meny'),
-      ),
-      body: Center(
-        child: RaisedButton(
-          child: Text('Realtidskarta'),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => VTLiveMap()),
-            );
-          },
-        ),
-      ),
-    );
-  }
 }
