@@ -6,6 +6,7 @@
       "about": {
         "title": "Om appen",
         "subtitle": "Information om appen",
+        "app_version": "Version",
         "menu_image": {
           "title": "Menybild",
           "subtitle": "Foto av %s"

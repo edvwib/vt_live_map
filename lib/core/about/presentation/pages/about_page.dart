@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_translate/flutter_translate.dart';
+import 'package:package_info/package_info.dart';
 import 'package:vt_live_map/core/helpers/url.dart';
 import 'package:vt_live_map/core/lang/lang.dart';
 
@@ -9,6 +10,19 @@ class AboutPage extends StatefulWidget {
 }
 
 class _AboutPageState extends State<AboutPage> {
+  String appVersion = '';
+
+  @override
+  void initState() {
+    super.initState();
+
+    PackageInfo.fromPlatform().then((final PackageInfo packageInfo) {
+      this.setState(() {
+        appVersion = packageInfo.version;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,6 +31,11 @@ class _AboutPageState extends State<AboutPage> {
       ),
       body: ListView(
         children: <Widget>[
+          ListTile(
+            title: Text(translate(Lang.APP_VIEW_ABOUT_APP_VERSION)),
+            subtitle: Text(appVersion),
+            onTap: () => null,
+          ),
           ListTile(
             title: Text(translate(Lang.APP_VIEW_ABOUT_MENU_IMAGE_TITLE)),
             subtitle: Text(translate(Lang.APP_VIEW_ABOUT_MENU_IMAGE_SUBTITLE)

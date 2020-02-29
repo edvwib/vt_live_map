@@ -6,6 +6,7 @@
       "about": {
         "title": "About",
         "subtitle": "Information about the app",
+        "app_version": "Version",
         "menu_image": {
           "title": "Menu image",
           "subtitle": "Image by %s"
