@@ -34,8 +34,4 @@ Future<void> init() async {
       sl<Get>(),
     ),
   );
-
-  sl.registerLazySingleton<Get>(
-    () => Get(),
-  );
 }

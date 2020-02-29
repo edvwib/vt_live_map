@@ -12,10 +12,13 @@ abstract class LiveMapEvent extends Equatable {
 
 class GetLiveMapEvent extends LiveMapEvent {
   final LiveMapRequestModel request;
+  final List<ProdClass> vehicleTypeFilter;
 
   GetLiveMapEvent(
-    this.request,
-  ) : super([
+    this.request, {
+    this.vehicleTypeFilter = const [],
+  }) : super([
           request,
+          vehicleTypeFilter,
         ]);
 }
