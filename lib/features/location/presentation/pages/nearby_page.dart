@@ -5,6 +5,7 @@ import 'package:flutter_translate/flutter_translate.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:vt_live_map/core/helpers/navigation.dart';
 import 'package:vt_live_map/core/lang/lang.dart';
 import 'package:vt_live_map/features/location/data/models/nearby_stops_request_model.dart';
 import 'package:vt_live_map/features/location/domain/entities/nearby_stops.dart';
@@ -77,19 +78,23 @@ class NearbyPageState extends State<NearbyPage> {
             _nearbyStops = state.nearbyStops;
             _stops = state.nearbyStops.stops;
           }
-          return Scaffold(
-            appBar: AppBar(
-              title: Text(translate(Lang.APP_DRAWER_NEARBY)),
+          return WillPopScope(
+            onWillPop: () => confirmCloseApplication(context),
+            child: Scaffold(
+              appBar: AppBar(
+                title: Text(translate(Lang.APP_VIEW_NEARBY)),
+              ),
+              body: ListView.builder(
+                  itemCount: _stops.length,
+                  itemBuilder: (final BuildContext context, final int index) {
+                    return ListTile(
+                      title: Text(_stops[index].name),
+                      subtitle: Text(_stops[index].track == null
+                          ? ''
+                          : _stops[index].track),
+                    );
+                  }),
             ),
-            body: ListView.builder(
-                itemCount: _stops.length,
-                itemBuilder: (final BuildContext context, final int index) {
-                  return ListTile(
-                    title: Text(_stops[index].name),
-                    subtitle: Text(
-                        _stops[index].track == null ? '' : _stops[index].track),
-                  );
-                }),
           );
         },
       ),

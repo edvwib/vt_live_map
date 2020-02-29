@@ -1,6 +1,12 @@
 {
   "app": {
     "name": "VT Live Map",
+    "confirm_close": {
+      "title": "Bekräfta avstängning",
+      "content": "Vill du stänga VT Live Map?",
+      "yes": "Ja",
+      "no": "Nej"
+    },
     "drawer": {
       "settings": "Inställningar",
       "about": {

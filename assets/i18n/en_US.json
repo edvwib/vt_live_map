@@ -1,6 +1,12 @@
 {
   "app": {
     "name": "VT Live Map",
+    "confirm_close": {
+      "title": "Confirm exit",
+      "content": "Do you want to close VT Live Map?",
+      "yes": "Yes",
+      "no": "No"
+    },
     "view": {
       "settings": "Settings",
       "about": {

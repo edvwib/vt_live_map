@@ -9,6 +9,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:vt_live_map/core/app_drawer/presentation/app_drawer.dart';
+import 'package:vt_live_map/core/helpers/navigation.dart';
 import 'package:vt_live_map/core/lang/lang.dart';
 import 'package:vt_live_map/features/live_map/data/models/live_map_request_model.dart';
 import 'package:vt_live_map/features/live_map/domain/entities/live_map.dart';
@@ -150,28 +151,31 @@ class LiveMapPageState extends State<LiveMapPage> {
           if (state is Loaded) {
             _updateMap(state.liveMap);
           }
-          return Scaffold(
-            appBar: AppBar(
-              title: Text(translate(Lang.APP_VIEW_LIVE_MAP)),
-            ),
-            drawer: AppDrawer(),
-            body: Container(
-              child: GoogleMap(
-                initialCameraPosition: CameraPosition(
-                  target: _initialView,
-                  zoom: 15.0,
-                ),
-                onMapCreated: _onMapCreated,
-                onCameraIdle: _onCameraIdle,
-                markers: _vehicles,
-                myLocationEnabled: true,
-                mapToolbarEnabled: false,
+          return WillPopScope(
+            onWillPop: () => confirmCloseApplication(context),
+            child: Scaffold(
+              appBar: AppBar(
+                title: Text(translate(Lang.APP_VIEW_LIVE_MAP)),
               ),
-            ),
-            floatingActionButton: FloatingActionButton(
-              backgroundColor: ThemeData.light().accentColor,
-              child: Icon(Icons.directions_bus),
-              onPressed: _showVehicleFilterSelections,
+              drawer: AppDrawer(),
+              body: Container(
+                child: GoogleMap(
+                  initialCameraPosition: CameraPosition(
+                    target: _initialView,
+                    zoom: 15.0,
+                  ),
+                  onMapCreated: _onMapCreated,
+                  onCameraIdle: _onCameraIdle,
+                  markers: _vehicles,
+                  myLocationEnabled: true,
+                  mapToolbarEnabled: false,
+                ),
+              ),
+              floatingActionButton: FloatingActionButton(
+                backgroundColor: ThemeData.light().accentColor,
+                child: Icon(Icons.directions_bus),
+                onPressed: _showVehicleFilterSelections,
+              ),
             ),
           );
         },
