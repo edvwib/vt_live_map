@@ -1,4 +1,16 @@
 {
+  "app": {
+    "name": "VT Live Map",
+    "view": {
+      "settings": "Settings",
+      "live_map": "Live map",
+      "arrivals": "Arrivals",
+      "departures": "Departures",
+      "nearby": "Nearby",
+      "system_info": "System info",
+      "trip": "Search trip"
+    }
+  },
   "vehicle": {
     "type": {
       "bus": "Bus",

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_translate/flutter_translate.dart';
-import 'package:vt_live_map/core/app_menu/presentation/app_menu.dart';
+import 'package:intl/intl.dart';
 import 'package:vt_live_map/core/application/presentation/pages/app_init.dart';
+import 'package:vt_live_map/core/settings/presentation/pages/settings.dart';
 import 'package:vt_live_map/features/live_map/presentation/pages/live_map_page.dart';
+import 'package:vt_live_map/features/location/presentation/pages/nearby_page.dart';
 
 class VTLiveMap extends StatefulWidget {
   @override
@@ -40,6 +42,8 @@ class _VTLiveMapState extends State<VTLiveMap> {
           (Locale deviceLocale, Iterable<Locale> supportedLocales) {
         // Todo check if deviceLocale is supported
         localizationDelegate.changeLocale(deviceLocale);
+        Intl.defaultLocale =
+            '${deviceLocale.countryCode}_${deviceLocale.languageCode}';
         return deviceLocale;
       },
       supportedLocales: localizationDelegate.supportedLocales,

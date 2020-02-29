@@ -1,4 +1,16 @@
 {
+  "app": {
+    "name": "VT Live Map",
+    "drawer": {
+      "settings": "Inställningar",
+      "live_map": "Realtidskarta",
+      "arrivals": "Ankomster",
+      "departures": "Avgångar",
+      "nearby": "I närheten",
+      "system_info": "Systeminfo",
+      "trip": "Sök resa"
+    }
+  },
   "vehicle": {
     "type": {
       "bus": "Buss",
