@@ -12,7 +12,7 @@ class Token {
   static Auth auth;
   static DateTime tokenExpiresAt = DateTime.now();
 
-  static Future<void> getToken() async {
+  static Future<String> getToken() async {
     final Map<String, String> headers = {};
     headers['Content-Type'] = 'application/x-www-form-urlencoded';
     headers['Authorization'] = 'Basic $_token';
@@ -29,14 +29,22 @@ class Token {
       auth = AuthModel.fromJson(json.decode(res.body));
       tokenExpiresAt =
           DateTime.now().add(Duration(seconds: auth.expiresIn - 10));
+
+      return auth.accessToken;
     } else {
       throw Exception('Autentication failed');
     }
   }
 
-  static Future<void> checkToken() async {
-    if (DateTime.now().isAfter(tokenExpiresAt)) {
-      await getToken();
+  static Future<String> checkToken() async {
+    if (Token.auth != null) {
+      if (DateTime.now().isAfter(tokenExpiresAt)) {
+        return getToken();
+      }
+
+      return Token.auth.accessToken;
     }
+
+    return getToken();
   }
 }

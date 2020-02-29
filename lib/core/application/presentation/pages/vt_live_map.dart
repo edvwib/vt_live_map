@@ -53,6 +53,7 @@ class _VTLiveMapState extends State<VTLiveMap> {
         '/init': (final BuildContext context) => AppInit(),
         '/settings': (final BuildContext context) => Settings(),
         '/liveMap': (final BuildContext context) => LiveMapPage(),
+        '/nearby': (final BuildContext context) => NearbyPage(),
       },
     );
   }
