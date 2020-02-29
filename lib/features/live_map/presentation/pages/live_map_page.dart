@@ -30,7 +30,7 @@ class LiveMapPageState extends State<LiveMapPage> {
   GoogleMapController _map;
   LatLngBounds _mapBounds;
   LatLng _initialView = const LatLng(57.7089, 11.9746); // Gothenburg
-  Set<Marker> _vehicles = Set();
+  Map<MarkerId, Marker> _vehicles = Map();
 
   Timer _timer;
 
@@ -108,22 +108,19 @@ class LiveMapPageState extends State<LiveMapPage> {
   }
 
   void _updateMap(final LiveMap res) async {
-    Map<String, Set<Marker>> markers = await getMarkers(res);
-    setState(() {
-      _vehicles.clear();
-      _vehicles.addAll(markers['vehicles']);
-    });
-  }
+    res.vehicles.forEach((final Vehicle vehicle) async {
+      final BitmapDescriptor vehicleIcon = await vehicle.getIcon();
+      final MarkerId markerId = MarkerId(vehicle.gid);
 
-  Future<Map<String, Set<Marker>>> getMarkers(final LiveMap res) async {
-    final Set<Marker> vehicles = {};
-
-    for (var i = 0; i < res.vehicles.length; i++) {
-      final Vehicle vehicle = res.vehicles[i];
-      final vehicleIcon = await vehicle.getIcon();
-      vehicles.add(Marker(
+      _vehicles.update(markerId, (final Marker marker) {
+        final Marker updatedMarker = marker.copyWith(
+          positionParam: LatLng(vehicle.y, vehicle.x),
+        );
+        return updatedMarker;
+      }, ifAbsent: () {
+        return Marker(
+          markerId: markerId,
           icon: vehicleIcon,
-          markerId: MarkerId(vehicle.gid),
           position: LatLng(vehicle.y, vehicle.x),
           anchor: Offset(0.5, 0.5),
           // rotation: vehicle.direction,
@@ -131,11 +128,10 @@ class LiveMapPageState extends State<LiveMapPage> {
             title: vehicle.getName(),
             snippet: vehicle.getDelayString(),
           ),
-          onTap: () => print(vehicle.props)));
-    }
-    final Map<String, Set<Marker>> map = Map();
-    map['vehicles'] = vehicles;
-    return map;
+          onTap: () => print(vehicle.props),
+        );
+      });
+    });
   }
 
   @override
@@ -166,7 +162,7 @@ class LiveMapPageState extends State<LiveMapPage> {
                   ),
                   onMapCreated: _onMapCreated,
                   onCameraIdle: _onCameraIdle,
-                  markers: _vehicles,
+                  markers: Set<Marker>.of(_vehicles.values),
                   myLocationEnabled: true,
                   mapToolbarEnabled: false,
                 ),
