@@ -15,8 +15,9 @@
     "type": {
       "bus": "Buss",
       "tram": "Spårvagn",
-      "ferry": "Färja",
-      "train": {
+      "boat": "Färja",
+      "train": "Tåg",
+      "train_type": {
         "long_distance": "Långdistanståg",
         "regional": "Regionaltåg",
         "vasttagen": "Västtågen"

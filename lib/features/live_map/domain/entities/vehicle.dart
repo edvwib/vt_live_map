@@ -77,6 +77,8 @@ class Vehicle extends Equatable {
       else*/
       line = line.replaceFirst('Bus ', '');
     }
+    if (this.vehicleType == getProdClassValue(ProdClass.BOAT))
+      line = line.replaceFirst('Fär ', translate(Lang.VEHICLE_TYPE_BOAT) + ' ');
 
     return line.trim();
   }

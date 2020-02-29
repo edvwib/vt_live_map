@@ -10,14 +10,14 @@ class VehicleIcon {
 
   static Future<BitmapDescriptor> create(Vehicle vehicle) async {
     final String name = vehicle.getName();
+    if (icons.containsKey(name)) {
+      return icons[name];
+    }
+
     String line = vehicle.getLine();
     if (line.contains("express")) line = line.split(" ").first;
 
     final String text = line;
-
-    if (icons.containsKey(name)) {
-      return icons[name];
-    }
 
     final Paint paint = Paint();
     paint.color = vehicle.lineColor;
@@ -59,7 +59,6 @@ class VehicleIcon {
       RRect.fromLTRBR(0, height, width, 0, Radius.circular(5)),
       paint,
     );
-
     textPainter.paint(canvas, Offset(offsetHorizontal, offsetVertical));
 
     /* // Draws direction arrow

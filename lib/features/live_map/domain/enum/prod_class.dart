@@ -1,4 +1,19 @@
+import 'package:flutter_translate/flutter_translate.dart';
+import 'package:vt_live_map/core/lang/lang.dart';
+
 enum ProdClass {
+  /// Bus
+  BUS,
+
+  /// Tram
+  TRAM,
+
+  /// Ferry
+  BOAT,
+
+  /// Taxi or Flexlinjen
+  TAXI,
+
   /// Västtågen
   VAS,
 
@@ -7,18 +22,6 @@ enum ProdClass {
 
   /// Regional train
   REG,
-
-  /// Bus
-  BUS,
-
-  /// Ferry
-  BOAT,
-
-  /// Tram
-  TRAM,
-
-  /// Taxi or Flexlinjen
-  TAXI,
 
   /// Unknown
   UNKNOWN,
@@ -47,4 +50,27 @@ ProdClass getProdClass(final String prodClass) {
     default:
       return ProdClass.UNKNOWN;
   }
+}
+
+String translateProdClass(final ProdClass pc) {
+  final String pcValue = getProdClassValue(pc);
+  String pcString = 'unknown';
+
+  switch (pcValue) {
+    case 'VAS':
+      pcString = 'train_type.vasttagen';
+      break;
+    case 'LDT':
+      pcString = 'train_type.long_distance';
+      break;
+    case 'REG':
+      pcString = 'train_type.regional';
+      break;
+    default:
+      pcString = pcValue.toLowerCase();
+  }
+
+  return translate(
+    Lang.VEHICLE_TYPE_BUS.replaceFirst('bus', pcString),
+  );
 }

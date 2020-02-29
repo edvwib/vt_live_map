@@ -15,8 +15,9 @@
     "type": {
       "bus": "Bus",
       "tram": "Tram",
-      "ferry": "Ferry",
-      "train": {
+      "boat": "Ferry",
+      "train": "Train",
+      "train_type": {
         "long_distance": "Long distance train",
         "regional": "Regional train",
         "vasttagen": "Västtågen"
