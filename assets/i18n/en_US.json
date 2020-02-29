@@ -3,6 +3,14 @@
     "name": "VT Live Map",
     "view": {
       "settings": "Settings",
+      "about": {
+        "title": "About",
+        "subtitle": "Information about the app",
+        "menu_image": {
+          "title": "Menu image",
+          "subtitle": "Image by %s"
+        }
+      },
       "live_map": "Live map",
       "arrivals": "Arrivals",
       "departures": "Departures",

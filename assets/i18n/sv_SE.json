@@ -3,6 +3,14 @@
     "name": "VT Live Map",
     "drawer": {
       "settings": "Inställningar",
+      "about": {
+        "title": "Om appen",
+        "subtitle": "Information om appen",
+        "menu_image": {
+          "title": "Menybild",
+          "subtitle": "Foto av %s"
+        }
+      },
       "live_map": "Realtidskarta",
       "arrivals": "Ankomster",
       "departures": "Avgångar",

@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:intl/intl.dart';
+import 'package:vt_live_map/core/about/presentation/pages/about_page.dart';
 import 'package:vt_live_map/core/application/presentation/pages/app_init.dart';
-import 'package:vt_live_map/core/settings/presentation/pages/settings.dart';
+import 'package:vt_live_map/core/settings/presentation/pages/settings_page.dart';
 import 'package:vt_live_map/features/live_map/presentation/pages/live_map_page.dart';
 import 'package:vt_live_map/features/location/presentation/pages/nearby_page.dart';
 
@@ -51,7 +52,8 @@ class _VTLiveMapState extends State<VTLiveMap> {
       initialRoute: '/init',
       routes: {
         '/init': (final BuildContext context) => AppInit(),
-        '/settings': (final BuildContext context) => Settings(),
+        '/settings': (final BuildContext context) => SettingsPage(),
+        '/about': (final BuildContext context) => AboutPage(),
         '/liveMap': (final BuildContext context) => LiveMapPage(),
         '/nearby': (final BuildContext context) => NearbyPage(),
       },

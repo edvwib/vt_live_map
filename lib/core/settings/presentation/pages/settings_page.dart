@@ -6,12 +6,12 @@ import 'package:vt_live_map/core/lang/lang.dart';
 import 'package:vt_live_map/core/settings/presentation/bloc/settings_bloc.dart';
 import 'package:vt_live_map/injection_container.dart';
 
-class Settings extends StatefulWidget {
+class SettingsPage extends StatefulWidget {
   @override
-  _SettingsState createState() => _SettingsState();
+  _SettingsPageState createState() => _SettingsPageState();
 }
 
-class _SettingsState extends State<Settings> {
+class _SettingsPageState extends State<SettingsPage> {
   SettingsBloc _bloc;
 
   @override
@@ -41,9 +41,9 @@ class _SettingsState extends State<Settings> {
           return ListView(
             children: <Widget>[
               ListTile(
-                title: Text("This is a ListPreference"),
-                subtitle: Text("Subtitle goes here"),
-                onTap: () {},
+                title: Text(translate(Lang.APP_VIEW_ABOUT_TITLE)),
+                subtitle: Text(translate(Lang.APP_VIEW_ABOUT_SUBTITLE)),
+                onTap: () => Navigator.of(context).pushNamed("/about"),
               ),
             ],
           );
