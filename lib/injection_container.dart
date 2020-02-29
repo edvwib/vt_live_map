@@ -4,6 +4,8 @@ import 'package:vt_live_map/core/application/injection_container.dart'
     as app_init_di;
 import 'package:vt_live_map/core/authentication/injection_container.dart'
     as authentication_di;
+import 'package:vt_live_map/core/settings/injection_container.dart'
+    as settings_di;
 import 'package:vt_live_map/features/live_map/injection_container.dart'
     as live_map_di;
 
@@ -22,6 +24,7 @@ Future<void> init() async {
   );
 
   await app_init_di.init();
+  await settings_di.init();
   await authentication_di.init();
   await live_map_di.init();
 }

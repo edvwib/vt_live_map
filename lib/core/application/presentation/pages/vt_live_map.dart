@@ -50,9 +50,9 @@ class _VTLiveMapState extends State<VTLiveMap> {
       locale: localizationDelegate.currentLocale,
       initialRoute: '/init',
       routes: {
-        '/init': (context) => AppInit(),
-        '/menu': (context) => AppMenu(),
-        '/liveMap': (context) => LiveMapPage(),
+        '/init': (final BuildContext context) => AppInit(),
+        '/settings': (final BuildContext context) => Settings(),
+        '/liveMap': (final BuildContext context) => LiveMapPage(),
       },
     );
   }
